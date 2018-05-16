@@ -11,5 +11,12 @@
     "nodemon": "^1.17.4",
     "object-hash": "^1.2.0",
     "require": "^2.4.20"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha"
   }
 }

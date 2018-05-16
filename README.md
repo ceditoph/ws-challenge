@@ -1,8 +1,7 @@
 ## Getting Started
 ``` javascript
 npm i  
-npx ./builder.js  
-node server.js
+npm start
 ```  
 ---
 In your browser, navigate to localhost:3000
