@@ -15,17 +15,16 @@ https.get(link, (resp) => {
  
   resp.on('end', () => {
     payload = data;
-    // console.log(payload)
   });
  
 }).on("error", (err) => {
   console.log("Error: " + err.message);
 });
 
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, './main')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './public'), 'index.html')
+  res.sendFile(path.join(__dirname, './main'), 'index.html')
   res.end()
 })
 
