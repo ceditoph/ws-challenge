@@ -43,7 +43,6 @@ function setAttributes(elem, attrs) {
   for(var key in attrs) {
     if(key === 'href') elem.setAttribute('src', attrs[key]);
     else if(key === 'textContent') elem.textContent = attrs[key];
-    // else if(key === 'images') elem['data-images'] = attrs[key];
     else elem.setAttribute(key, attrs[key]);
   }
 }

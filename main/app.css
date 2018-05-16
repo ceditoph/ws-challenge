@@ -76,8 +76,6 @@ body{
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-right: 10px;
-  margin-left: 10px;
   height: 30px;
   bottom: 30px;
 }
@@ -89,6 +87,7 @@ body{
   border: 1px solid #ddd;
   border-radius: 50%;
   margin: 7px;
+  cursor: pointer;
 }
 
 .radio-empty{
@@ -97,25 +96,31 @@ body{
   border: 1px solid #ddd;
   border-radius: 50%;
   margin: 7px;
+  cursor: pointer;
 }
 
-.close{
-  right: 15px;
+.control-container{
+  position: absolute;
 }
-
-.prev{
-  top: 45%;
-  left: -7px;
-}
-
-.next{
-  top: 45%;
-  right: -7px;
-}
-
 .controls{
   font-size: 40px;
   cursor: pointer;
   position: absolute;
   color: #444;
+  text-shadow: white 0.1em 0.1em 0.2em
+}
+
+.close{
+  right: 10px;
+  top: -10px;
+}
+
+.prev{
+  top: 45%;
+  left: 2;
+}
+
+.next{
+  top: 45%;
+  right: 2;
 }
