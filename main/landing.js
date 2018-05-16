@@ -17,3 +17,6 @@ function generateTable(list){
   });
 }
 
+/*
+*Several elements of the data are not being used, such as page numbers/pagination, but could be included in a more robust solution.
+*/

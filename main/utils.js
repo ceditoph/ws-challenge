@@ -1,10 +1,31 @@
 function eventHandler(e){
   e.preventDefault();
   
-  if(e.target.className === 'hero'){
-    const imageSet = JSON.parse(e.target.getAttribute('data-imageSet'));
-    generateLightbox(imageSet);
+  switch(e.target.className){
+    case 'hero':
+      const imageSet = JSON.parse(e.target.getAttribute('data-imageSet'));
+      generateLightbox(imageSet);
+      break;
+
+    case 'close controls':
+      closeLightbox();
+      break;
+
+    case 'prev controls':
+      cycleActiveImages('left');
+      break;
+
+    case 'next controls':
+      cycleActiveImages('right');
+      break;
+
+    case 'radio-empty':
+      selectActiveImage(e.target)
+      break;
+    default:
+    break;
   }
+  
 }
 
 function generateElem(type, attributes, className){
@@ -43,10 +64,9 @@ function generateRadioButtons(imageSet, active){
 
   imageSet.map((image, i) => {
     const className = i === active ? 'radio-filled' : 'radio-empty';
-    buttons.push(generateElem('div', {}, className));
+    buttons.push(generateElem('div', {'data-image': JSON.stringify(image)}, className));
   });
 
-  console.log(buttons)
   return buttons;
 }
 
@@ -59,6 +79,31 @@ function generateLightboxControls(){
 }
 
 function closeLightbox(){
-  const lightbox = document.getElementsByClassName('lightbox')[0];
-  lightbox.close();
+  const lightbox = document.getElementsByClassName('product-lightbox')[0];
+  lightbox.remove();
+}
+
+function selectActiveImage(button){
+  const image = button.getAttribute('data-image')
+
+  document.getElementsByClassName('radio-filled')[0].className = 'radio-empty';
+  button.className = 'radio-filled';
+  document.querySelector('.product-image > img').replaceWith(generateElem('img', JSON.parse(image)))
+}
+
+function cycleActiveImages(direction){
+  let nextButton;
+
+  switch(direction){
+    case 'left':
+      if(document.querySelector('.radio-filled').previousSibling) nextButton = document.querySelector('.radio-filled').previousSibling;
+      else nextButton = document.querySelectorAll('.radio-empty')[document.querySelectorAll('.radio-empty').length-1];
+      break;
+
+    case 'right':
+      if(document.querySelector('.radio-filled').nextSibling) nextButton = document.querySelector('.radio-filled').nextSibling;
+      else nextButton = document.querySelector('.radio-empty');
+  }
+
+  selectActiveImage(nextButton)
 }

@@ -9,6 +9,6 @@
     document.addEventListener('click', eventHandler);
   })
   .catch(err => {
-    console.warn('unable to retrieve data : ',err)
+    console.warn('unable to retrieve data : ',err);
   });
 })();

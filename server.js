@@ -32,4 +32,6 @@ app.get('/api', (req, res) => {
   res.send(payload)
 })
 
-app.listen(3000, () => console.log('WS-challenge listening on port 3000!'))
+app.listen(3000, () => console.log('WS-challenge listening on port 3000!'));
+
+exports.app = app;
