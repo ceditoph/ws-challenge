@@ -1,23 +1,37 @@
 
-// import React, {Component, Fragment} from 'react';
-// import ReactDOM from 'react-dom';
+function generateLightbox(imageSet){
+  const lightbox = generateElem('div', {}, 'product-lightbox');
+  const lightboxContent = generateElem('div', {}, 'lightbox-content');
+  const imageContainer = generateElem('div', {style: `height: ${imageSet[0].height}; width: ${imageSet[0].width}`}, 'product-image')
+  const lightboxImage = generateElem('img', imageSet[0]);
+  const controls = generateLightboxControls();
+  const radioContainer = generateElem('div', {}, 'radio-container');
+  const radioButtons = generateRadioButtons(imageSet);
 
-// export default class Lightbox extends Component {
-//   constructor(props){
-//     super(...arguments);
+  //put buttons in container
+  radioButtons.map((radioButton, i) => {
+    radioContainer.appendChild(radioButton);
+  });
 
-//     this.state = {
-//       imageSet: [],
-//       isHidden: [],
-//       currentImageIndex: 0
-//     }
-//   }
+  //put controls into content node
+  controls.map(control => {
+    lightbox.appendChild(control);
+  });
+  
+  //place image in container
+  imageContainer.appendChild(lightboxImage);
 
-//   componentWillReceiveProps({isHidden, imageSet}){
-//     this.setState({isHidden, imageSet});
-//   }
+  //place image and radio buttons into  node
+  lightbox.appendChild(imageContainer);
+  lightbox.appendChild(radioContainer);
 
-//   render(){
+  //place  node into lightbox
+  // lightbox.appendChild(lightbox);
+
+  //place lightbox on doc body
+  document.body.appendChild(lightbox);
+}
+
 //     return this.state.isHidden ? null : (
 //       <div id="lightbox" className="product-lightbox">
 //         <div className="lightbox-content" 
@@ -26,9 +40,9 @@
 //             width: (this.state.imageSet[this.state.currentImageIndex].width+20)
 //           }}
 //         >
-//           <div className="close controls" onClick={this.hideLightbox.bind(this)}>x</div>
-//           <div className="prev controls" onClick={() => this.selectPrevImage()}>&lang;</div>
-//           <div className="next controls" onClick={() => this.selectNextImage()}>&rang;</div>
+          // <div className="close controls" onClick={this.hideLightbox.bind(this)}>x</div>
+          // <div className="prev controls" onClick={() => this.selectPrevImage()}>&lang;</div>
+          // <div className="next controls" onClick={() => this.selectNextImage()}>&rang;</div>
 //           <div className="product-image"
 //             style={{
 //               height: (this.state.imageSet[this.state.currentImageIndex].height),
