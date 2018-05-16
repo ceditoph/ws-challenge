@@ -1,19 +1,20 @@
+
 function generateTable(list){
   const heroContainer = generateElem('div', {}, 'container');
     
   document.getElementById('root').appendChild(heroContainer)
 
   list.map(item => {
-    let child = generateElem('img', item.hero, 'hero');
-    generateLabels(item)
-    // heroContainer.appendChild(generateLabels(child));
-  })
-}
+    const parent = generateElem('div');
+    const child = generateElem('img', item.hero, 'hero');
+    
+    parent.style.position = 'relative';
+    parent.appendChild(child);
+    generateLabels(item, parent);
+    
+    heroContainer.appendChild(parent);
+  });
 
-function generateLabels(item){
-// console.log(item)
-  const priceLabel = generateElem('div',{innerText: item.priceRange.regular.low}, 'product-price');
-  const productName = generateElem('div',{innerText: item.name}, 'product-name');
 }
 
 //              <div
